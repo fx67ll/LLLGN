@@ -43,7 +43,7 @@
 				// 打印完之后自动停止
 				const element = document.querySelector('#fx67ll-typical');
 				const myWordsFirst = "😝 很高兴！在这小小的宇宙里遇见你 🌏";
-				const myWordsSecond = "✨️ 今天是认识 panyu 的第" + this.meetHerDays + "天" + "❤️";
+				const myWordsSecond = "✨️ 今天是认识 panyu 的第" + this.meetHerDays + "天" + " ❤️";
 				type(element, myWordsFirst, 2000, myWordsSecond);
 			},
 			// 天数计算
