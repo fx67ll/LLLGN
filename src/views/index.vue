@@ -1,6 +1,6 @@
 <template>
 	<div class="fx67ll-box">
-		<div id="fx67ll-typical" class="fx67ll-tip">️</div>
+		<div id="fx67ll-typical" class="fx67ll-tip" @click="typeMyWords()">️</div>
 		<!-- <div id="fx67ll-typical" class="fx67ll-tip"></div> -->
 		<div class="fx67ll-clock"></div>
 	</div>
@@ -44,7 +44,7 @@
 				const element = document.querySelector('#fx67ll-typical');
 				const myWordsFirst = "😝 很高兴！在这小小的宇宙里遇见你 🌏";
 				const myWordsSecond = "✨️ 今天是认识 panyu 的第" + this.meetHerDays + "天" + "❤️";
-				type(element, myWordsFirst, 1000, myWordsSecond);
+				type(element, myWordsFirst, 2000, myWordsSecond);
 			},
 			// 天数计算
 			initStuDays() {
