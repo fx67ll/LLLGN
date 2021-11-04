@@ -1,6 +1,7 @@
 <template>
 	<div class="fx67ll-box">
-		<div class="fx67ll-tip">✨️ 今天是认识 panyu 的第{{ meetHerDays }}天 ❤️</div>
+		<!-- <div class="fx67ll-tip">✨️ 今天是认识 panyu 的第{{ meetHerDays }}天 ❤️</div> -->
+		<div class="fx67ll-tip">{{ meetHerDays }}</div>
 		<div class="fx67ll-clock"></div>
 	</div>
 </template>
@@ -26,14 +27,14 @@
 		methods: {
 			// 天数计算
 			initStuDays() {
-				let meetHerDays = moment(moment().format('YYYY-MM-DD')).diff(moment('2021-09-12').format('YYYY-MM-DD'),
+				let meetHerDays = moment(moment().format('YYYY-MM-DD')).diff(moment('20210823').format('YYYY-MM-DD'),
 					'day');
 				this.meetHerDays = this.NumberToChinese(meetHerDays);
 			},
 			// 时钟初始化
 			initClock() {
 				const el = document.querySelector('.fx67ll-clock');
-				const clock = new FlipClock(el, new Date(2021, 9, 12, 0, 0, 0, 0), {
+				const clock = new FlipClock(el, new Date(2021, 7, 23, 0, 0, 0, 0), {
 					face: 'DayCounter', // 类型  
 					showSeconds: true, // 显示秒数  
 					showLabels: true, // 显示文字标识  
