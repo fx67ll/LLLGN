@@ -1,7 +1,6 @@
 <template>
 	<div class="fx67ll-box">
-		<!-- <div class="fx67ll-tip">✨️ 今天是认识 panyu 的第{{ meetHerDays }}天 ❤️</div> -->
-		<div class="fx67ll-tip">{{ meetHerDays }}</div>
+		<div class="fx67ll-tip">✨️ 今天是认识 panyu 的第{{ meetHerDays }}天 ❤️</div>
 		<div class="fx67ll-clock"></div>
 	</div>
 </template>
