@@ -1,6 +1,7 @@
 <template>
 	<div class="fx67ll-box">
-		<div class="fx67ll-tip">✨️ 今天是认识 panyu 的第{{ meetHerDays }}天 ❤️</div>
+		<div id="fx67ll-typical" class="fx67ll-tip">️</div>
+		<!-- <div id="fx67ll-typical" class="fx67ll-tip"></div> -->
 		<div class="fx67ll-clock"></div>
 	</div>
 </template>
@@ -9,6 +10,10 @@
 	import FlipClock from 'flipclock';
 	import 'flipclock/dist/flipclock.css';
 	import moment from 'moment';
+	import {
+		type,
+		type as loop
+	} from '@camwiegert/typical';
 	export default {
 		name: 'fx67llIndex',
 		data() {
@@ -22,8 +27,25 @@
 		mounted() {
 			this.initStuDays();
 			this.initClock();
+			this.typeMyWords();
 		},
 		methods: {
+			// 打印一些有意思的内容
+			typeMyWords() {
+				// 循环打印
+				// const element = document.querySelector('#fx67ll-typical');
+				// const myWordsFirst = "测试~测试~测试~测试~测试~测试~测试~测试~测试~";
+				// const myWordsSecond = "继续测试！继续测试！继续测试！继续测试！继续测试！继续测试！";
+				// const myWordsThird = "还是在测试哈哈///还是在测试哈哈///还是在测试哈哈";
+				// const steps = [1000, myWordsFirst, 1000, myWordsSecond, 1000, myWordsThird];
+				// type(element, ...steps, loop);
+
+				// 打印完之后自动停止
+				const element = document.querySelector('#fx67ll-typical');
+				const myWordsFirst = "😝 很高兴！在这小小的宇宙里遇见你 🌏";
+				const myWordsSecond = "✨️ 今天是认识 panyu 的第" + this.meetHerDays + "天" + "❤️";
+				type(element, myWordsFirst, 1000, myWordsSecond);
+			},
 			// 天数计算
 			initStuDays() {
 				let meetHerDays = moment(moment().format('YYYY-MM-DD')).diff(moment('20210823').format('YYYY-MM-DD'),
