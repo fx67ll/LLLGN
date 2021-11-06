@@ -1,5 +1,6 @@
 <template>
 	<div class="fx67ll-box">
+		<!-- 点击重新开始动画 -->
 		<div id="fx67ll-typical" class="fx67ll-tip" @click="typeMyWords()">️</div>
 		<!-- <div id="fx67ll-typical" class="fx67ll-tip"></div> -->
 		<div class="fx67ll-clock"></div>
