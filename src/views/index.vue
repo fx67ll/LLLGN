@@ -45,6 +45,7 @@
 			},
 			// 显示一下攻略的开始结束时间
 			breathAnimation() {
+				// 动态添加Class无法动态加载动画，必须用动画完成的监听清除动画，才可以重新调用动画  
 				// document.getElementById("fx67ll-record-start").setAttribute("class", "fx67ll-record-animation-breath");
 				document.getElementById("fx67ll-record-start").style.animation = "breath 5.4s linear 2 alternate";
 				setTimeout(function() {
@@ -191,15 +192,15 @@
 		.fx67ll-tip {
 			width: 100%;
 			text-align: center;
-			font-size: 50px;
+			font-size: 3vw;
 			color: #2ECC71;
 			position: absolute;
-			top: 15%;
+			top: 15vw;
 		}
 
 		.fx67ll-clock {
 			position: relative;
-			top: 60%;
+			top: 40vw;
 			margin-top: -10vw;
 		}
 
@@ -209,7 +210,7 @@
 			bottom: 10vw;
 			display: flex;
 			justify-content: center;
-			font-size: 30px;
+			font-size: 2vw;
 			font-weight: 900;
 			color: #2ECC71;
 

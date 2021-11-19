@@ -6,6 +6,7 @@ A Project For Yu ~
 * Finish sth new  
 * yu is a project code now  
 * add new goodbye animation  
+* match all device  
 
 ## 0.1.2.20211113
 * project dead  
