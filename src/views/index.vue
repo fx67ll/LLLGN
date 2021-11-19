@@ -1,9 +1,14 @@
 <template>
 	<div class="fx67ll-box">
 		<!-- 点击重新开始动画 -->
-		<div id="fx67ll-typical" class="fx67ll-tip" @click="typeMyWords()">️</div>
+		<div id="fx67ll-typical" class="fx67ll-tip" @click="repeatAnimation()">️</div>
 		<!-- <div id="fx67ll-typical" class="fx67ll-tip"></div> -->
 		<div class="fx67ll-clock"></div>
+		<div class="fx67ll-record">
+			<span id="fx67ll-record-start">From 2021-08-23 🥳 </span>
+			&nbsp;&nbsp;&nbsp;
+			<span id="fx67ll-record-end">To 2021-11-13 🥶 </span>
+		</div>
 	</div>
 </template>
 
@@ -29,8 +34,38 @@
 			this.initStuDays();
 			this.initClock();
 			this.typeMyWords();
+			this.consoleFailDays();
+			this.breathAnimation();
 		},
 		methods: {
+			// 重复动画
+			repeatAnimation() {
+				this.typeMyWords();
+				this.breathAnimation();
+			},
+			// 显示一下攻略的开始结束时间
+			breathAnimation() {
+				// document.getElementById("fx67ll-record-start").setAttribute("class", "fx67ll-record-animation-breath");
+				document.getElementById("fx67ll-record-start").style.animation = "breath 5.4s linear 2 alternate";
+				setTimeout(function() {
+					// document.getElementById("fx67ll-record-end").setAttribute("class",
+					// 	"fx67ll-record-animation-breath");
+					document.getElementById("fx67ll-record-end").style.animation = "breath 5.4s linear 2 alternate";
+				}, 5400);
+				document.getElementById("fx67ll-record-start").addEventListener("animationend", function() {
+					document.getElementById("fx67ll-record-start").style.animation = "";
+				});
+				document.getElementById("fx67ll-record-end").addEventListener("animationend", function() {
+					document.getElementById("fx67ll-record-end").style.animation = "";
+				});
+			},
+			// 失败日
+			consoleFailDays() {
+				let failDays = moment(moment('20211113').format('YYYY-MM-DD')).diff(moment('20210823').format(
+						'YYYY-MM-DD'),
+					'day');
+				console.log('fx67ll已于2021年11月13日获得失败，本次攻略时间仅' + failDays + '天');
+			},
 			// 打印一些有意思的内容
 			typeMyWords() {
 				// 循环打印
@@ -43,10 +78,11 @@
 
 				// 打印完之后自动停止
 				const element = document.querySelector('#fx67ll-typical');
-				// const myWordsFirst = "⛰️ 山有木兮卿有意，昨夜星辰恰似你 💖";
-				const myWordsSecond = "😝 很高兴！在这小小的宇宙里遇见你 🌏";
-				const myWordsThird = "✨️ 今天是认识 yu 的第" + this.meetHerDays + "天" + " ❤️";
-				type(element, myWordsSecond, 3000, myWordsThird);
+				const myWordsFirst = "⛰️ 虽然，不太成熟的我虽然没能吸引到你 💖";
+				const myWordsSecond = "😝 但是，很高兴能在这小小的宇宙里遇见你 🌏";
+				const myWordsThird = "📷 所以，我还是想记录下这个在我生命中很重要的瞬间 🕰️";
+				const myWordsFourth = "✨️ 今天是认识 yu 的第" + this.meetHerDays + "天" + " ❤️";
+				type(element, myWordsFirst, 2000, myWordsSecond, 2000, myWordsThird, 2000, myWordsFourth);
 			},
 			// 天数计算
 			initStuDays() {
@@ -57,7 +93,7 @@
 			// 时钟初始化
 			initClock() {
 				const el = document.querySelector('.fx67ll-clock');
-				const clock = new FlipClock(el, new Date(2021, 7, 23, 0, 0, 0, 0), {
+				const clock = new FlipClock(el, new Date('2021-08-23'), {
 					face: 'DayCounter', // 类型  
 					showSeconds: true, // 显示秒数  
 					showLabels: true, // 显示文字标识  
@@ -131,9 +167,18 @@
 </script>
 <style type="text/css">
 	.flip-clock {
-		width: auto;
 		font-size: 2vw;
-		left: 11vw;
+		justify-content: center;
+	}
+
+	@keyframes breath {
+		from {
+			opacity: 0;
+		}
+
+		to {
+			opacity: 1;
+		}
 	}
 </style>
 <style lang="less" scoped="scoped">
@@ -157,5 +202,36 @@
 			top: 60%;
 			margin-top: -10vw;
 		}
+
+		.fx67ll-record {
+			width: 100%;
+			position: absolute;
+			bottom: 10vw;
+			display: flex;
+			justify-content: center;
+			font-size: 30px;
+			font-weight: 900;
+			color: #2ECC71;
+
+			span {
+				position: relative;
+				opacity: 0;
+			}
+
+		}
 	}
+
+	// .fx67ll-record-animation-breath {
+	// 	animation: breath 5s linear 2 alternate;
+	// }
+
+	// @keyframes breath {
+	// 	from {
+	// 		opacity: 0;
+	// 	}
+
+	// 	to {
+	// 		opacity: 1;
+	// 	}
+	// }
 </style>
