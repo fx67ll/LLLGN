@@ -195,24 +195,25 @@
 			font-size: 3vw;
 			color: #2ECC71;
 			position: absolute;
-			top: 15vw;
+			top: 7vw;
 		}
 
 		.fx67ll-clock {
 			position: relative;
-			top: 40vw;
+			top: 30vw;
 			margin-top: -10vw;
 		}
 
 		.fx67ll-record {
 			width: 100%;
 			position: absolute;
-			bottom: 10vw;
+			top: 45vw;
 			display: flex;
 			justify-content: center;
 			font-size: 2vw;
 			font-weight: 900;
 			color: #2ECC71;
+			padding-bottom: 1vw;
 
 			span {
 				position: relative;
