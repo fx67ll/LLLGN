@@ -12,6 +12,9 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 
+import fx67llVueUI from 'fx67ll-vue-ui'
+Vue.use(fx67llVueUI)
+
 new Vue({
 	router,
 	store,

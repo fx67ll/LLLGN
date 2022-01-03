@@ -1,14 +1,8 @@
 <template>
 	<div class="fx67ll-box">
-		<!-- 点击重新开始动画 -->
 		<div id="fx67ll-typical" class="fx67ll-tip" @click="repeatAnimation()">️</div>
-		<div id="fx67ll-typical" class="fx67ll-tip"></div>
 		<div class="fx67ll-clock"></div>
-		<!-- <div class="fx67ll-record">
-			<span id="fx67ll-record-start">From 2021-08-23 🥳 </span>
-			&nbsp;&nbsp;&nbsp;
-			<span id="fx67ll-record-end">To 2021-11-13 🥶 </span>
-		</div> -->
+		<fx67ll-footer/>
 	</div>
 </template>
 
@@ -21,6 +15,7 @@ export default {
 	name: 'fx67llIndex',
 	data() {
 		return {
+			meetHerDate: '2021-11-23',
 			meetHerDays: 0,
 			chnNumChar: ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'],
 			chnUnitSection: ['', '万', '亿', '万亿', '亿亿'],
@@ -31,56 +26,28 @@ export default {
 		this.initStuDays();
 		this.initClock();
 		this.typeMyWords();
-		// this.breathAnimation();
 	},
 	methods: {
-		// 重复动画
+		// 点击后重复动画
 		repeatAnimation() {
 			this.typeMyWords();
-			this.breathAnimation();
-		},
-		// 显示一下攻略的开始结束时间
-		breathAnimation() {
-			// 动态添加Class无法动态加载动画，必须用动画完成的监听清除动画，才可以重新调用动画
-			// document.getElementById("fx67ll-record-start").setAttribute("class", "fx67ll-record-animation-breath");
-			document.getElementById('fx67ll-record-start').style.animation = 'breath 5.4s linear 2 alternate';
-			setTimeout(function() {
-				// document.getElementById("fx67ll-record-end").setAttribute("class",
-				// 	"fx67ll-record-animation-breath");
-				document.getElementById('fx67ll-record-end').style.animation = 'breath 5.4s linear 2 alternate';
-			}, 5400);
-			document.getElementById('fx67ll-record-start').addEventListener('animationend', function() {
-				document.getElementById('fx67ll-record-start').style.animation = '';
-			});
-			document.getElementById('fx67ll-record-end').addEventListener('animationend', function() {
-				document.getElementById('fx67ll-record-end').style.animation = '';
-			});
 		},
 		// 打印一些有意思的内容
 		typeMyWords() {
-			// 循环打印
-			// const element = document.querySelector('#fx67ll-typical');
-			// const myWordsFirst = "测试~测试~测试~测试~测试~测试~测试~测试~测试~";
-			// const myWordsSecond = "继续测试！继续测试！继续测试！继续测试！继续测试！继续测试！";
-			// const myWordsThird = "还是在测试哈哈///还是在测试哈哈///还是在测试哈哈";
-			// const steps = [1000, myWordsFirst, 1000, myWordsSecond, 1000, myWordsThird];
-			// type(element, ...steps, loop);
-
-			// 打印完之后自动停止
+			// 循环打印动画
 			const element = document.querySelector('#fx67ll-typical');
-			const myWordsFirst = '😝 很高兴能在这小小的宇宙里遇见你 🌏';
-			const myWordsSecond = '✨️ 今天是认识楠楠的第' + this.meetHerDays + '天' + ' ❤️';
-			type(element, myWordsFirst, 2000, myWordsSecond, 60000, loop);
+			const myWordArr = ['😝 很高兴能在这小小的宇宙里遇见你 🌏', '✨️ 今天是认识楠楠的第' + this.meetHerDays + '天' + ' ❤️'];
+			type(element, myWordArr[0], 2000, myWordArr[1], 60000, loop);
 		},
 		// 天数计算
 		initStuDays() {
-			let meetHerDays = moment(moment().format('YYYY-MM-DD')).diff(moment('20211123').format('YYYY-MM-DD'), 'day');
+			let meetHerDays = moment(moment().format('YYYY-MM-DD')).diff(moment(this.meetHerDate).format('YYYY-MM-DD'), 'day');
 			this.meetHerDays = this.NumberToChinese(meetHerDays);
 		},
 		// 时钟初始化
 		initClock() {
 			const el = document.querySelector('.fx67ll-clock');
-			const clock = new FlipClock(el, new Date('2021-11-23'), {
+			const clock = new FlipClock(el, new Date(this.meetHerDate), {
 				face: 'DayCounter', // 类型
 				showSeconds: true, // 显示秒数
 				showLabels: true, // 显示文字标识
@@ -157,16 +124,6 @@ export default {
 	font-size: 2vw;
 	justify-content: center;
 }
-
-@keyframes breath {
-	from {
-		opacity: 0;
-	}
-
-	to {
-		opacity: 1;
-	}
-}
 </style>
 <style lang="less" scoped="scoped">
 .fx67ll-box {
@@ -189,36 +146,5 @@ export default {
 		top: 30vw;
 		margin-top: -10vw;
 	}
-
-	.fx67ll-record {
-		width: 100%;
-		position: absolute;
-		top: 45vw;
-		display: flex;
-		justify-content: center;
-		font-size: 2vw;
-		font-weight: 900;
-		color: #2ecc71;
-		padding-bottom: 1vw;
-
-		span {
-			position: relative;
-			opacity: 0;
-		}
-	}
 }
-
-// .fx67ll-record-animation-breath {
-// 	animation: breath 5s linear 2 alternate;
-// }
-
-// @keyframes breath {
-// 	from {
-// 		opacity: 0;
-// 	}
-
-// 	to {
-// 		opacity: 1;
-// 	}
-// }
 </style>
