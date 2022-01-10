@@ -15,7 +15,7 @@ export default {
 	name: 'fx67llIndex',
 	data() {
 		return {
-			meetHerDate: '2021-11-23',
+			meetHerDate: '2021-10-15',
 			meetHerDays: 0,
 			chnNumChar: ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'],
 			chnUnitSection: ['', '万', '亿', '万亿', '亿亿'],
