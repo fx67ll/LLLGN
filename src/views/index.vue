@@ -15,7 +15,7 @@ export default {
 	name: 'fx67llIndex',
 	data() {
 		return {
-			meetHerDate: '2021-10-15',
+			meetHerDate: '2022-01-08',
 			meetHerDays: 0,
 			chnNumChar: ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'],
 			chnUnitSection: ['', '万', '亿', '万亿', '亿亿'],
@@ -36,7 +36,7 @@ export default {
 		typeMyWords() {
 			// 循环打印动画
 			const element = document.querySelector('#fx67ll-typical');
-			const myWordArr = ['😝 很高兴能在这小小的宇宙里遇见你 🌏', '✨️ 今天是认识楠楠的第' + this.meetHerDays + '天' + ' ❤️'];
+			const myWordArr = ['😝 很高兴能在这小小的宇宙里遇见你 🌏', '✨️ 今天是和楠楠在一起的第' + this.meetHerDays + '天' + ' ❤️'];
 			type(element, myWordArr[0], 2000, myWordArr[1], 60000, loop);
 		},
 		// 天数计算

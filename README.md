@@ -13,6 +13,9 @@ A Project For NanNan ~
 + 一起吃鱼看电影  
 
 
+## 0.3.3.20220308  
+* edit days  
+
 ## 0.3.2.20220103  
 * rename project again and maybe the last idea：**LLLGN**  
 * udpate file `favicon.ico`  
