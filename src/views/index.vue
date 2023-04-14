@@ -146,5 +146,11 @@ export default {
 		top: 30vw;
 		margin-top: -10vw;
 	}
+
+	@media screen and (max-width: 960px) {
+		.fx67ll-footer {
+			font-size: 12px;
+		}
+	}
 }
 </style>
