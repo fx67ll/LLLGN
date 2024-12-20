@@ -1,7 +1,8 @@
 # LLLGN
 A Project For NanNan ~
 
-欢迎参观项目效果地址 [guonan.Love](http://guonan.love "LLLGN")  
+~~欢迎参观项目效果地址 [guonan.Love](http://guonan.love "LLLGN")~~  
+欢迎参观项目效果地址 [love.fx67ll.com](http://love.fx67ll.com "LLLGN") 
 
 #### Some Little Record
 + 去朋友撸猫然后去朋友家里恰饭，第一次聚会  
@@ -13,6 +14,9 @@ A Project For NanNan ~
 + 一起吃鱼看电影  
 + ...
 
+
+## 0.4.0.20241220  
+* change url to `love.fx67ll.com`
 
 ## 0.3.3.20220308  
 * edit days  
