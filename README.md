@@ -15,6 +15,9 @@ A Project For NanNan ~
 + ...
 
 
+## 0.4.1.20250731
+* 适配没有内存执行构建的jenkins应用  
+
 ## 0.4.0.20241220  
 * change url to `love.fx67ll.com`
 
