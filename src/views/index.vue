@@ -1,8 +1,11 @@
 <template>
-	<div class="fx67ll-box">
+	<div class="fx67ll-box" @click="triggerFireworksEgg()">
 		<div id="fx67ll-typical" class="fx67ll-tip" @click="repeatAnimation()">️</div>
 		<div class="fx67ll-clock"></div>
-		<fx67ll-footer/>
+		<div class="fx67ll-fireworks">
+			<fx67ll-nan-fireworks ref="fireworks" :isShowLaunchBtn="false"></fx67ll-nan-fireworks>
+		</div>
+		<fx67ll-footer />
 	</div>
 </template>
 
@@ -19,13 +22,20 @@ export default {
 			meetHerDays: 0,
 			chnNumChar: ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'],
 			chnUnitSection: ['', '万', '亿', '万亿', '亿亿'],
-			chnUnitChar: ['', '十', '百', '千']
+			chnUnitChar: ['', '十', '百', '千'],
+			fireworksTimer: null
 		};
 	},
 	mounted() {
 		this.initStuDays();
 		this.initClock();
 		this.typeMyWords();
+
+
+		this.stopLaunchFireworks();
+	},
+	beforeDestroy() {
+		this.fireworksTimer = null;
 	},
 	methods: {
 		// 点击后重复动画
@@ -115,6 +125,28 @@ export default {
 				section = Math.floor(section / 10);
 			}
 			return chnStr;
+		},
+		// 放烟花彩蛋
+		triggerFireworksEgg() {
+			const self = this;
+			if (this.$refs.fireworks) {
+				this.$refs.fireworks.startFireworks();
+				this.$refs.fireworks.setBackground({
+					color: 'rgba(0, 0, 0, 0.97)'
+				});
+				this.fireworksTimer = setTimeout(() => {
+					self.stopLaunchFireworks();
+				}, 9999);
+			}
+		},
+		// 停止放烟花
+		stopLaunchFireworks() {
+			if (this.$refs.fireworks) {
+				this.$refs.fireworks.stopFireworks();
+				this.$refs.fireworks.setBackground({
+					color: 'rgba(236, 240, 241, 1)'
+				});
+			}
 		}
 	}
 };
@@ -130,6 +162,8 @@ export default {
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
+	background-color: #fff;
+
 	.ban-user-select();
 
 	.fx67ll-tip {
@@ -139,18 +173,30 @@ export default {
 		color: #2ecc71;
 		position: absolute;
 		top: 7vw;
+		z-index: 233;
 	}
 
 	.fx67ll-clock {
 		position: relative;
 		top: 30vw;
 		margin-top: -10vw;
+		z-index: 233;
 	}
 
 	@media screen and (max-width: 960px) {
 		.fx67ll-footer {
 			font-size: 12px;
 		}
+	}
+
+	.fx67ll-fireworks {
+		width: 100vw;
+		height: 100vh;
+		overflow: hidden;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 1;
 	}
 }
 </style>
