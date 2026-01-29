@@ -1,7 +1,8 @@
 <template>
-	<div class="fx67ll-box" @click="triggerFireworksEgg()">
-		<div id="fx67ll-typical" class="fx67ll-tip" @click="repeatAnimation()">️</div>
-		<div class="fx67ll-clock"></div>
+	<div class="fx67ll-box">
+		<div id="fx67ll-typical" class="fx67ll-tip" @click="repeatAnimation()" v-show="!isLoadingFireworks"></div>
+		<div id="fx67ll-typical-egg" class="fx67ll-tip" @click="repeatAnimation()" v-show="isLoadingFireworks"></div>
+		<div class="fx67ll-clock" @click="triggerFireworksEgg()"></div>
 		<div class="fx67ll-fireworks">
 			<fx67ll-nan-fireworks ref="fireworks" :isShowLaunchBtn="false"></fx67ll-nan-fireworks>
 		</div>
@@ -23,15 +24,15 @@ export default {
 			chnNumChar: ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'],
 			chnUnitSection: ['', '万', '亿', '万亿', '亿亿'],
 			chnUnitChar: ['', '十', '百', '千'],
-			fireworksTimer: null
+			isFirstTrigger: true,
+			isLoadingFireworks: false,
+			fireworksTimer: null,
 		};
 	},
 	mounted() {
 		this.initStuDays();
 		this.initClock();
 		this.typeMyWords();
-
-
 		this.stopLaunchFireworks();
 	},
 	beforeDestroy() {
@@ -129,11 +130,20 @@ export default {
 		// 放烟花彩蛋
 		triggerFireworksEgg() {
 			const self = this;
-			if (this.$refs.fireworks) {
+
+			if (this.isFirstTrigger) {
+				console.log("恭喜你触发了隐藏彩蛋 🥚");
+				console.log("Thanks♪(･ω･)ﾉ For Ur Happy Fireworks ✨");
+				this.isFirstTrigger = false;
+			}
+
+			if (this.$refs.fireworks && !this.isLoadingFireworks) {
+				this.isLoadingFireworks = true;
 				this.$refs.fireworks.startFireworks();
 				this.$refs.fireworks.setBackground({
 					color: 'rgba(0, 0, 0, 0.97)'
 				});
+				this.typeEggWords();
 				this.fireworksTimer = setTimeout(() => {
 					self.stopLaunchFireworks();
 				}, 9999);
@@ -141,13 +151,20 @@ export default {
 		},
 		// 停止放烟花
 		stopLaunchFireworks() {
+			this.isLoadingFireworks = false;
 			if (this.$refs.fireworks) {
 				this.$refs.fireworks.stopFireworks();
 				this.$refs.fireworks.setBackground({
 					color: 'rgba(236, 240, 241, 1)'
 				});
 			}
-		}
+		},
+		// 打印一些有意思的内容
+		typeEggWords() {
+			const element = document.querySelector('#fx67ll-typical-egg');
+			const myWordArr = ['🎉 恭喜你触发了隐藏彩蛋 🥚', '🎊Thanks♪(･ω･)ﾉ 谢谢你送的祝福烟花秀 ㊗️'];
+			type(element, myWordArr[0], 2000, myWordArr[1], 60000, loop);
+		},
 	}
 };
 </script>
